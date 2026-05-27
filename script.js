@@ -31,12 +31,14 @@
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 })();
 
-/* ---- Botón de play del artesano ---- */
-const playBtn = document.querySelector('.artesano__play');
-if (playBtn) {
-  playBtn.addEventListener('click', () => {
-    // Reemplaza la URL con la de tu video real:
-    // window.open('https://youtube.com/watch?v=TU_VIDEO_ID', '_blank');
-    alert('Próximamente: video de Carlos Bustos en su taller.');
+/* ---- Video del artesano ---- */
+const artesanoVideo = document.querySelector('.artesano__video');
+if (artesanoVideo) {
+  artesanoVideo.addEventListener('click', () => {
+    if (artesanoVideo.paused) {
+      artesanoVideo.play();
+    } else {
+      artesanoVideo.pause();
+    }
   });
 }

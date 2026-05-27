@@ -128,17 +128,15 @@
   <section class="artesano" id="artesano">
     <div class="artesano__inner">
       <div class="artesano__media">
-        <!--
-          IMAGEN ARTESANO
-          Nombre sugerido: artesano-carlos.png
-          Descripción: foto de Carlos Bustos trabajando el barro en su taller
-        -->
-        <img src="artesano-carlos.png" alt="Carlos Bustos trabajando en su taller" class="artesano__foto" />
-        <div class="artesano__play" aria-label="Ver video">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="10,7 22,14 10,21" fill="#2d4a2a"/>
-          </svg>
-        </div>
+        <video
+          src="proceso.mov"
+          class="artesano__video"
+          controls
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        ></video>
       </div>
       <div class="artesano__content">
         <span class="artesano__label">EL ARTESANO</span>
