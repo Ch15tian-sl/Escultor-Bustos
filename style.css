@@ -1,0 +1,562 @@
+/* ===========================
+   CARLOS BUSTOS — ARTESANO
+   style.css — Paleta Tlaquepaque Pueblo Mágico
+   =========================== */
+
+/*
+  PALETA INSPIRADA EN TLAQUEPAQUE
+  ─────────────────────────────────
+  --terracota:     color barro cocido de las esculturas y fachadas
+  --ocre:          dorado cálido de los muros encalados al sol
+  --talavera-blue: azul profundo de la cerámica talavera
+  --verde-colonial:#  verde musgo de las rejas y portones coloniales
+  --adobe:         arena rojiza de los muros de adobe
+  --blanco-cal:    blanco cálido de las paredes encaladas
+*/
+
+:root {
+  /* Fondos */
+  --cream:        #f5ede0;       /* Arena cálida — muros encalados */
+  --cream-dark:   #ecddc8;       /* Ocre suave */
+  --adobe:        #c97d4a;       /* Terracota media — barro de Tlaquepaque */
+  --terracota:    #b85c38;       /* Terracota profunda — cerámica de barro */
+  --terracota-dk: #8c3d22;       /* Terracota oscura — sombras del barro */
+
+  /* Acento azul talavera */
+  --talavera:     #2b5f8e;       /* Azul talavera */
+  --talavera-lt:  #4a85b8;       /* Azul talavera claro */
+
+  /* Verdes coloniales */
+  --verde-colonial: #3a5e3f;     /* Verde reja colonial */
+  --verde-mid:      #5a8a5e;     /* Verde musgo */
+  --verde-light:    #8ab88e;     /* Verde salvia */
+
+  /* Ocre / dorado */
+  --ocre:         #c8922a;       /* Dorado ocre — azulejos y ornamentos */
+  --ocre-lt:      #e8b84b;       /* Dorado claro */
+
+  /* Texto */
+  --text-dark:    #2a1a0e;       /* Café oscuro — tierra */
+  --text-mid:     #5a3e28;       /* Café medio */
+  --text-light:   #9a7a5e;       /* Café claro */
+  --white:        #fdfaf6;       /* Blanco cálido */
+
+  /* Sombras */
+  --shadow-sm: 0 2px 12px rgba(184, 92, 56, 0.10);
+  --shadow-md: 0 6px 28px rgba(184, 92, 56, 0.18);
+  --shadow-lg: 0 12px 48px rgba(184, 92, 56, 0.22);
+
+  /* Layout */
+  --radius-card: 14px;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Cormorant Garamond', Georgia, serif;
+  --font-ui:      'Jost', sans-serif;
+  --max-width:    1200px;
+  --gutter:       24px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  background-color: var(--cream);
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+/* ===========================
+   NAVBAR
+   =========================== */
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 20px var(--gutter);
+  background: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid var(--adobe);
+  box-shadow: 0 2px 16px rgba(184,92,56,0.10);
+}
+
+.navbar__inner {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar__brand { display: flex; flex-direction: column; gap: 1px; padding-left: 20px; padding-right: 20px;}
+
+.navbar__name {
+  padding: 30px,
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  color: var(--terracota-dk);
+}
+
+.navbar__subtitle {
+  font-family: var(--font-ui);
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  color: var(--ocre);
+  text-transform: uppercase;
+}
+
+.navbar__links {
+  display: none;
+  gap: 36px;
+  list-style: none;
+}
+
+.navbar__links a {
+  font-family: var(--font-ui);
+  font-size: 12.5px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--text-mid);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.navbar__links a:hover { color: var(--terracota); }
+
+/* ===========================
+   HERO
+   =========================== */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-start;
+  padding: 32px var(--gutter) 0;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  min-height: 400px;
+  overflow: hidden;
+  /* Franja decorativa inferior — como el zócalo de las fachadas */
+  position: relative;
+}
+
+/* Línea decorativa tipo cenefa talavera */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg,
+    var(--terracota) 0%,
+    var(--ocre) 30%,
+    var(--talavera) 60%,
+    var(--verde-colonial) 100%
+  );
+  opacity: 0.45;
+}
+
+.hero__text { padding-top: 12px; z-index: 2; }
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+
+.hero__title em {
+  font-style: italic;
+  color: var(--terracota);   /* Terracota en lugar de verde */
+}
+
+.hero__desc {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.65;
+  max-width: 300px;
+}
+
+.hero__image {
+  margin-top: -10px;
+  margin-right: -24px;
+}
+
+.hero__img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center top;
+  filter: drop-shadow(0 10px 28px rgba(140,61,34,0.22));
+  animation: floatHero 5s ease-in-out infinite;
+}
+
+@keyframes floatHero {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* ===========================
+   OBRAS DESTACADAS
+   =========================== */
+.obras {
+  padding: 56px 0 40px;
+  /* Fondo con textura visual sutil — evoca paredes de adobe */
+  background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+}
+
+.obras__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.obras__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(200, 146, 42, 0.3);  /* línea ocre */
+}
+
+.obras__titulo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Punto decorativo tipo ornamento */
+.obras__titulo-wrap::before {
+  content: '✦';
+  color: var(--ocre);
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.obras__titulo {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 11.5px;
+  letter-spacing: 0.22em;
+  color: var(--terracota-dk);
+  text-transform: uppercase;
+}
+
+/* ---- Carrusel Bootstrap ---- */
+.obras__carousel-bs {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  /* Borde terracota sutil */
+  border: 1px solid rgba(184, 92, 56, 0.15);
+}
+
+.obra-card { background: var(--white); }
+
+.obra-card__img-wrap {
+  width: 100%;
+  height: 300px;
+  /* Fondo tipo papel amate / barro crudo */
+  background: linear-gradient(135deg, #ede0cc 0%, #e0cdb5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.obra-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 16px;
+}
+
+.obra-card__info {
+  padding: 18px 22px 20px;
+  border-top: 3px solid var(--terracota);  /* Franja terracota */
+}
+
+.obra-card__nombre {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--terracota-dk);
+  margin-bottom: 4px;
+}
+
+.obra-card__desc {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-light);
+}
+
+/* Flechas del carrusel — azul talavera */
+.obras__carousel-bs .carousel-control-prev,
+.obras__carousel-bs .carousel-control-next {
+  width: 40px;
+  height: 40px;
+  background: var(--terracota);
+  border-radius: 50%;
+  top: 42%;
+  transform: translateY(-50%);
+  bottom: auto;
+  opacity: 0.88;
+  margin: 0 10px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.obras__carousel-bs .carousel-control-prev:hover,
+.obras__carousel-bs .carousel-control-next:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.obras__carousel-bs .carousel-control-prev-icon,
+.obras__carousel-bs .carousel-control-next-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* ===========================
+   EL ARTESANO
+   =========================== */
+.artesano {
+  padding: 56px 0 64px;
+  /* Fondo con el ocre dorado de los muros coloniales */
+  background: linear-gradient(135deg, var(--cream-dark) 0%, #e8d5b8 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ornamento decorativo fondo — evoca azulejo */
+.artesano::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,146,42,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.artesano::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -40px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(43,95,142,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.artesano__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.artesano__media {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: #c8a882;
+  box-shadow: var(--shadow-lg);
+  /* Borde terracota */
+  border: 3px solid var(--adobe);
+}
+
+.artesano__foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.artesano__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(44, 26, 14, 0.15);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.artesano__play:hover { background: rgba(44, 26, 14, 0.28); }
+
+.artesano__play svg {
+  background: rgba(253, 250, 246, 0.95);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(140,61,34,0.25);
+  transition: transform 0.2s;
+}
+
+.artesano__play:hover svg { transform: scale(1.08); }
+
+.artesano__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.artesano__label {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  color: var(--ocre);
+  text-transform: uppercase;
+}
+
+.artesano__desc {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.75;
+}
+
+.artesano__link {
+  font-family: var(--font-ui);
+  font-size: 13.5px;
+  color: var(--talavera);
+  border-bottom: 1px solid var(--talavera);
+  padding-bottom: 2px;
+  display: inline-block;
+  margin-top: 4px;
+  cursor: default;
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
+.footer {
+  background: var(--terracota-dk);  /* Fondo terracota oscuro */
+  padding: 36px var(--gutter);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border-top: 4px solid var(--ocre);
+}
+
+.footer__brand { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+
+.footer__name {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--white);
+}
+
+.footer__sub {
+  font-family: var(--font-ui);
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  color: var(--ocre-lt);
+  text-transform: uppercase;
+}
+
+.footer__copy {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  color: rgba(253, 250, 246, 0.5);
+  margin-top: 4px;
+}
+
+/* ===========================
+   ANIMACIONES DE ENTRADA
+   =========================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===========================
+   RESPONSIVE — TABLET (≥ 768px)
+   =========================== */
+@media (min-width: 768px) {
+  :root { --gutter: 40px; }
+
+  .hero { padding-top: 48px; min-height: 500px; }
+  .hero__title { font-size: 56px; }
+  .hero__desc { font-size: 16px; }
+
+  .obra-card__img-wrap { height: 380px; }
+
+  .artesano__inner { gap: 48px; }
+  .artesano__content { gap: 18px; }
+  .artesano__desc { font-size: 17px; }
+}
+
+/* ===========================
+   RESPONSIVE — DESKTOP (≥ 1024px)
+   =========================== */
+@media (min-width: 1024px) {
+  :root { --gutter: 60px; }
+
+  .navbar { padding: 22px var(--gutter); }
+  .navbar__links { display: flex; }
+  .navbar__name { font-size: 15px; }
+
+  .hero {
+    padding: 72px var(--gutter) 0;
+    min-height: 580px;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .hero__image { margin-right: 0; }
+  .hero__title { font-size: 72px; }
+  .hero__desc { font-size: 17px; max-width: 380px; }
+
+  .obra-card__img-wrap { height: 460px; }
+  .obra-card__nombre { font-size: 24px; }
+
+  .artesano__inner { grid-template-columns: 420px 1fr; gap: 80px; }
+  .artesano__desc { font-size: 18px; }
+}
+
+/* ===========================
+   RESPONSIVE — WIDE (≥ 1280px)
+   =========================== */
+@media (min-width: 1280px) {
+  :root { --gutter: 80px; }
+
+  .hero__title { font-size: 84px; }
+  .obra-card__img-wrap { height: 520px; }
+  .artesano__inner { grid-template-columns: 460px 1fr; gap: 100px; }
+}
