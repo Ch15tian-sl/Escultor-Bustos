@@ -159,7 +159,6 @@ img { display: block; max-width: 100%; height: auto; }
   }
 
   .hero__image {
-    order: -1;          /* sube la imagen al tope */
     width: 100%;
     margin-right: 0;
     margin-top: 0;
@@ -190,6 +189,12 @@ img { display: block; max-width: 100%; height: auto; }
   .hero__desc {
     max-width: 100%;
   }
+}
+
+/* ---- Desktop: texto col-1, imagen col-2 (corrige el orden del DOM) ---- */
+@media (min-width: 768px) {
+  .hero__image { grid-column: 2; grid-row: 1; }
+  .hero__text  { grid-column: 1; grid-row: 1; }
 }
 
 /* Línea decorativa tipo cenefa talavera */
