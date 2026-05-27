@@ -31,14 +31,41 @@
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 })();
 
-/* ---- Video del artesano ---- */
-const artesanoVideo = document.querySelector('.artesano__video');
-if (artesanoVideo) {
-  artesanoVideo.addEventListener('click', () => {
-    if (artesanoVideo.paused) {
-      artesanoVideo.play();
+/* ---- Video del artesano: un solo toque en móvil ---- */
+(function initVideo() {
+  const video   = document.getElementById('artesanoVideo');
+  const overlay = document.getElementById('artesanoOverlay');
+  if (!video || !overlay) return;
+
+  function playVideo() {
+    // Asegura que el video esté en estado reproducible y lanza play()
+    video.muted = true;          // obligatorio en iOS/Android sin interacción previa
+    const promise = video.play();
+    if (promise !== undefined) {
+      promise
+        .then(() => { overlay.classList.add('hidden'); })
+        .catch(() => {
+          // Si el navegador bloquea autoplay, el overlay sigue visible
+          overlay.classList.remove('hidden');
+        });
     } else {
-      artesanoVideo.pause();
+      overlay.classList.add('hidden');
     }
+  }
+
+  // Un único listener — touchend evita el doble-evento en móvil
+  overlay.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    playVideo();
   });
-}
+
+  overlay.addEventListener('click', function(e) {
+    e.preventDefault();
+    playVideo();
+  });
+
+  // Al pausar (nativo), vuelve a mostrar el overlay
+  video.addEventListener('pause', function() {
+    if (!video.ended) overlay.classList.remove('hidden');
+  });
+})();

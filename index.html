@@ -128,14 +128,23 @@
     <div class="artesano__inner">
       <div class="artesano__media">
         <video
+          id="artesanoVideo"
           src="proceso.mov"
           class="artesano__video"
-          controls
           muted
           loop
           playsinline
           preload="metadata"
         ></video>
+        <!-- Overlay personalizado: resuelve el doble-clic en móvil y muestra poster -->
+        <div class="artesano__overlay" id="artesanoOverlay" role="button" aria-label="Reproducir video">
+          <div class="artesano__play-btn">
+            <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="28" cy="28" r="28" fill="rgba(253,250,246,0.92)"/>
+              <polygon points="22,16 42,28 22,40" fill="#8c3d22"/>
+            </svg>
+          </div>
+        </div>
       </div>
       <div class="artesano__content">
         <span class="artesano__label">EL ARTESANO</span>
