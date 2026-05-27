@@ -207,6 +207,22 @@ img { display: block; max-width: 100%; height: auto; }
   }
   .artesano__desc { font-size: 17px; max-width: 100%; }
 
+  /* Video poster en mobile — evita cuadro vacío en iOS/Safari */
+  .artesano__media {
+    /* Imagen de respaldo mientras carga el poster */
+    background: linear-gradient(135deg, #c8a882 0%, #b8936a 50%, #a07850 100%);
+  }
+
+  .artesano__video {
+    /* En iOS, preload="none" necesita que el poster se vea correctamente */
+    background: transparent;
+  }
+
+  /* Overlay visible siempre hasta que el usuario toca play */
+  .artesano__overlay {
+    background: rgba(44, 26, 14, 0.22);
+  }
+
   .hero__title {
     font-size: 38px;
   }
