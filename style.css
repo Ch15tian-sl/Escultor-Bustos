@@ -196,31 +196,42 @@ img { display: block; max-width: 100%; height: auto; }
     padding-bottom: 32px;
   }
 
-  /* Artesano en mobile: columna, texto centrado */
+  /* Artesano en mobile: columna, texto ARRIBA del video */
   .artesano__inner {
-    grid-template-columns: 1fr;
-    gap: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0;          /* sin gutter lateral — el video ocupa todo el ancho */
   }
+
+  /* Texto aparece primero gracias a order: -1 */
   .artesano__content {
+    order: -1;
     align-items: center;
     text-align: center;
+    padding: 0 var(--gutter);  /* gutter sólo para el texto */
   }
   .artesano__desc { font-size: 17px; max-width: 100%; }
 
-  /* Video poster en mobile — evita cuadro vacío en iOS/Safari */
+  /* Video ocupa todo el ancho de la pantalla */
   .artesano__media {
+    width: 100%;
+    border-radius: 0;          /* sin bordes redondeados para efecto full-bleed */
+    border-left: none;
+    border-right: none;
+    aspect-ratio: 4 / 5;      /* un poco más cuadrado en mobile para ganar ancho visual */
     /* Imagen de respaldo mientras carga el poster */
     background: linear-gradient(135deg, #c8a882 0%, #b8936a 50%, #a07850 100%);
   }
 
   .artesano__video {
-    /* En iOS, preload="none" necesita que el poster se vea correctamente */
     background: transparent;
   }
 
   /* Overlay visible siempre hasta que el usuario toca play */
   .artesano__overlay {
     background: rgba(44, 26, 14, 0.22);
+    border-radius: 0;
   }
 
   .hero__title {
@@ -654,14 +665,17 @@ img { display: block; max-width: 100%; height: auto; }
 
   .obra-card__img-wrap { height: 320px; }
 
-  .artesano__inner { grid-template-columns: 280px 1fr; gap: 64px; }
-  .artesano__media { aspect-ratio: 9 / 16; max-height: 500px; }
+  .artesano__inner { 
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
   .artesano__content {
-    align-items: center;       /* centra label + texto en desktop */
+    order: -1;
+    align-items: center;
     text-align: center;
     gap: 24px;
   }
-  .artesano__label { font-size: 12px; letter-spacing: 0.32em; }
+  .artesano__media { aspect-ratio: 9 / 16; max-height: 500px; max-width: 400px; margin: 0 auto; }
   .artesano__desc  { font-size: 22px; line-height: 1.7; max-width: 480px; }
 }
 
@@ -673,6 +687,6 @@ img { display: block; max-width: 100%; height: auto; }
 
   .hero__title { font-size: 84px; }
   .obra-card__img-wrap { height: 380px; }
-  .artesano__inner { grid-template-columns: 300px 1fr; gap: 80px; }
+  .artesano__inner { gap: 80px; }
   .artesano__desc  { font-size: 26px; }
 }
