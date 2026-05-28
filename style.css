@@ -198,29 +198,29 @@ img { display: block; max-width: 100%; height: auto; }
 
   /* Artesano en mobile: columna, texto ARRIBA del video */
   .artesano__inner {
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
     gap: 24px;
-    padding: 0;          /* sin gutter lateral — el video ocupa todo el ancho */
+    padding: 0;
   }
 
-  /* Texto aparece primero gracias a order: -1 */
+  /* Texto aparece primero */
   .artesano__content {
-    order: -1;
+    order: 1;
     align-items: center;
     text-align: center;
-    padding: 0 var(--gutter);  /* gutter sólo para el texto */
+    padding: 0 var(--gutter);
   }
   .artesano__desc { font-size: 17px; max-width: 100%; }
 
-  /* Video ocupa todo el ancho de la pantalla */
+  /* Video va debajo */
   .artesano__media {
+    order: 2;
     width: 100%;
-    border-radius: 0;          /* sin bordes redondeados para efecto full-bleed */
+    border-radius: 0;
     border-left: none;
     border-right: none;
-    aspect-ratio: 4 / 5;      /* un poco más cuadrado en mobile para ganar ancho visual */
-    /* Imagen de respaldo mientras carga el poster */
+    aspect-ratio: 4 / 5;
     background: linear-gradient(135deg, #c8a882 0%, #b8936a 50%, #a07850 100%);
   }
 
